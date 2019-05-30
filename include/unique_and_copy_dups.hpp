@@ -27,7 +27,6 @@ namespace mstl
             while(next != last && pred(*first, *next))
             {
                 *dup = std::move(*next);
-                std::advance(first, 1);
                 std::advance(next, 1);
             }
             first = next;
