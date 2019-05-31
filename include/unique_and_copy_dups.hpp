@@ -21,17 +21,17 @@ namespace mstl
 
         while(first != last)
         {
-            *unique = *first;
-            std::advance(unique, 1);
+            *unique = std::move(*first);
 
-            while(next != last && pred(*first, *next))
+            while(next != last && pred(*unique, *next))
             {
                 *dup = std::move(*next);
-                std::advance(first, 1);
                 std::advance(next, 1);
             }
+
             first = next;
             std::advance(next, 1);
+            std::advance(unique, 1);
         }
 
         return std::make_pair(unique, dup);
