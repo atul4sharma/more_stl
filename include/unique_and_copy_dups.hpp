@@ -26,6 +26,10 @@ namespace mstl
             while(next != last && pred(*unique, *next))
             {
                 *dup = std::move(*next);
+                // cannot call std::advance here as dup may be a back_insert_iterator
+                // and std::advance does not work with a back_insert_iterator since it
+                // does not define a difference_type
+                ++dup;
                 std::advance(next, 1);
             }
 
