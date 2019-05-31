@@ -30,12 +30,12 @@ namespace mstl
                 dup = std::move(*current);
                 ++dup;
             }
-            // The current item is part of a new subgroup
+            // The current item is part of a new subgroup.
             else
             {
                 ++unique;
                 // Assignment is required only if the current item is not
-                // next to the last unique value
+                // next to the last unique value.
                 if( unique != current )
                 {
                     *unique = std::move(*current);
