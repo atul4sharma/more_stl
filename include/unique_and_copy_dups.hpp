@@ -16,11 +16,12 @@ namespace mstl
             return std::make_pair(last, dup);
         }
 
-        auto next   = std::next(first);
         auto unique = first;
+        auto next   = first;
 
         while(first != last)
         {
+            std::advance(next, 1);
             *unique = std::move(*first);
 
             while(next != last && pred(*unique, *next))
@@ -34,7 +35,6 @@ namespace mstl
             }
 
             first = next;
-            std::advance(next, 1);
             std::advance(unique, 1);
         }
 
